@@ -1,1 +1,34 @@
-﻿  toolkit.vcxproj -> D:\Users\MDS3000061\Downloads\PS4_ClearScreen\PS4_ClearScreen\toolkit\toolkit_debug.a
+﻿  copytexture2d_p.pssl
+  cs_clearbuffer_c.pssl
+  cs_cleartexture1d_c.pssl
+  cs_cleartexture2d_c.pssl
+  cs_cleartexture3d_c.pssl
+  cs_copybuffer_c.pssl
+  cs_copyrawtexture1d_c.pssl
+  cs_copyrawtexture2d_c.pssl
+  cs_copyrawtexture3d_c.pssl
+  cs_copytexture1d_c.pssl
+  cs_copytexture2d_c.pssl
+  cs_copytexture3d_c.pssl
+  pixbg_p.pssl
+  cs_set_uint_c.pssl
+  cs_set_uint_fast_c.pssl
+  cs_test_buffer_read_c.pssl
+  cs_test_texture_read_c.pssl
+  pix_clear_p.pssl
+  vexbg_vv.pssl
+  pix_generateMipMaps_3d_p.pssl
+  pix_generateMipMaps_2d_p.pssl
+  vex_clear_vv.pssl
+  allocators.cpp
+  dataformat_interpreter.cpp
+  dataformat_tests.cpp
+  deallocator.cpp
+  embedded_shader.cpp
+  floating_point.cpp
+  half.cpp
+  region_allocator.cpp
+  shader_loader.cpp
+  stack_allocator.cpp
+  toolkit.cpp
+  toolkit.vcxproj -> D:\Users\MDS3000061\Playstation\PS4_ClearScreen\PS4_ClearScreen\toolkit\toolkit_debug.a

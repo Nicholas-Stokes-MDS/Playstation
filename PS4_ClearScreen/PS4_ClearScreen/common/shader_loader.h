@@ -6,7 +6,8 @@ PlayStation(R)4 Programmer Tool Runtime Library Release 12.508.001
 #ifndef _SHADER_LOADER_H_
 #define _SHADER_LOADER_H_
 
-#include "../api_gnm/toolkit/shader_loader.h"
+#include "../toolkit/shader_loader.h"
+#include "../toolkit/embedded_shader.h"
 
 bool readFileContents(void *data, const size_t size, FILE *fp)
 {
