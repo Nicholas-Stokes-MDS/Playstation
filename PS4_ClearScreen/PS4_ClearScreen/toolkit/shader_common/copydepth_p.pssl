@@ -1,0 +1,11 @@
+﻿/* SIE CONFIDENTIAL
+PlayStation(R)4 Programmer Tool Runtime Library Release 12.508.001
+* Copyright (C) 2016 Sony Interactive Entertainment Inc.
+*/
+
+#pragma PSSL_target_output_format (default FMT_32_GR)
+
+float4 main() : S_TARGET_OUTPUT
+{
+	return 0;
+}

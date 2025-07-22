@@ -1,0 +1,73 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Users\\MDS3000061\\Downloads\\PS4_ClearScreen\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E24AFAFA-1C69-48EA-947D-A110600556A1}|PS4_ClearScreen\\PS4_ClearScreen.vcxproj|D:\\Users\\MDS3000061\\Downloads\\PS4_ClearScreen\\PS4_ClearScreen\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E24AFAFA-1C69-48EA-947D-A110600556A1}|PS4_ClearScreen\\PS4_ClearScreen.vcxproj|solutionrelative:PS4_ClearScreen\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E24AFAFA-1C69-48EA-947D-A110600556A1}|PS4_ClearScreen\\PS4_ClearScreen.vcxproj|D:\\Users\\MDS3000061\\Downloads\\PS4_ClearScreen\\PS4_ClearScreen\\Context.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E24AFAFA-1C69-48EA-947D-A110600556A1}|PS4_ClearScreen\\PS4_ClearScreen.vcxproj|solutionrelative:PS4_ClearScreen\\Context.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E24AFAFA-1C69-48EA-947D-A110600556A1}|PS4_ClearScreen\\PS4_ClearScreen.vcxproj|D:\\Users\\MDS3000061\\Downloads\\PS4_ClearScreen\\PS4_ClearScreen\\Context.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E24AFAFA-1C69-48EA-947D-A110600556A1}|PS4_ClearScreen\\PS4_ClearScreen.vcxproj|solutionrelative:PS4_ClearScreen\\Context.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "D:\\Users\\MDS3000061\\Downloads\\PS4_ClearScreen\\PS4_ClearScreen\\main.cpp",
+              "RelativeDocumentMoniker": "PS4_ClearScreen\\main.cpp",
+              "ToolTip": "D:\\Users\\MDS3000061\\Downloads\\PS4_ClearScreen\\PS4_ClearScreen\\main.cpp",
+              "RelativeToolTip": "PS4_ClearScreen\\main.cpp",
+              "ViewState": "AQIAANYBAAAAAAAAAADwv+sBAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-22T02:20:14.378Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Context.h",
+              "DocumentMoniker": "D:\\Users\\MDS3000061\\Downloads\\PS4_ClearScreen\\PS4_ClearScreen\\Context.h",
+              "RelativeDocumentMoniker": "PS4_ClearScreen\\Context.h",
+              "ToolTip": "D:\\Users\\MDS3000061\\Downloads\\PS4_ClearScreen\\PS4_ClearScreen\\Context.h",
+              "RelativeToolTip": "PS4_ClearScreen\\Context.h",
+              "ViewState": "AQIAADYAAAAAAAAAAAAiwEoAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-22T02:46:29.947Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Context.cpp",
+              "DocumentMoniker": "D:\\Users\\MDS3000061\\Downloads\\PS4_ClearScreen\\PS4_ClearScreen\\Context.cpp",
+              "RelativeDocumentMoniker": "PS4_ClearScreen\\Context.cpp",
+              "ToolTip": "D:\\Users\\MDS3000061\\Downloads\\PS4_ClearScreen\\PS4_ClearScreen\\Context.cpp",
+              "RelativeToolTip": "PS4_ClearScreen\\Context.cpp",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-22T02:56:21.137Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

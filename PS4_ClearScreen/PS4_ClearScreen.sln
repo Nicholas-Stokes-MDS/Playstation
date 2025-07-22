@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35731.53
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PS4_ClearScreen", "PS4_ClearScreen\PS4_ClearScreen.vcxproj", "{E24AFAFA-1C69-48EA-947D-A110600556A1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_toolkit", "PS4_ClearScreen\toolkit\toolkit.vcxproj", "{2F4CCF89-7649-4C7F-8CBF-F976B4FBC2B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ORBIS = Debug|ORBIS
+		Release|ORBIS = Release|ORBIS
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E24AFAFA-1C69-48EA-947D-A110600556A1}.Debug|ORBIS.ActiveCfg = Debug|ORBIS
+		{E24AFAFA-1C69-48EA-947D-A110600556A1}.Debug|ORBIS.Build.0 = Debug|ORBIS
+		{E24AFAFA-1C69-48EA-947D-A110600556A1}.Release|ORBIS.ActiveCfg = Release|ORBIS
+		{E24AFAFA-1C69-48EA-947D-A110600556A1}.Release|ORBIS.Build.0 = Release|ORBIS
+		{2F4CCF89-7649-4C7F-8CBF-F976B4FBC2B6}.Debug|ORBIS.ActiveCfg = Debug|ORBIS
+		{2F4CCF89-7649-4C7F-8CBF-F976B4FBC2B6}.Debug|ORBIS.Build.0 = Debug|ORBIS
+		{2F4CCF89-7649-4C7F-8CBF-F976B4FBC2B6}.Release|ORBIS.ActiveCfg = Release|ORBIS
+		{2F4CCF89-7649-4C7F-8CBF-F976B4FBC2B6}.Release|ORBIS.Build.0 = Release|ORBIS
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47B60A5D-958C-453E-A819-372844D5C672}
+	EndGlobalSection
+EndGlobal
