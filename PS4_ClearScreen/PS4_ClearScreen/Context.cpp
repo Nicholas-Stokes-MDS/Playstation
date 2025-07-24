@@ -10,6 +10,27 @@ Context::~Context()
 
 }
 
+Context* Context::s_pInstance = nullptr;
+
+Context* Context::Instance()
+{
+	if (s_pInstance == nullptr)
+	{
+		s_pInstance = new Context();
+	}
+
+	return s_pInstance;
+}
+
+void Context::DestroyInstance()
+{
+	if (s_pInstance != nullptr)
+	{
+		delete s_pInstance;
+		s_pInstance = nullptr;
+	}
+}
+
 int Context::Initialise()
 {
 	//init code start ----------------------------------------------------
@@ -37,7 +58,6 @@ int Context::Initialise()
 	}
 
 	//creat the event queue used to sync with EOP events
-	eopEventQueue;
 	ret = sceKernelCreateEqueue(&eopEventQueue, "EOP QUEUE");
 	if (ret != SCE_OK)
 	{
@@ -54,7 +74,7 @@ int Context::Initialise()
 	}
 
 	//init the toolkit module
-	sce::Gnmx::Toolkit::Allocators toolkitAllocators;
+
 	onionAlloc.getIAllocator(toolkitAllocators.m_onion);
 	garlicAlloc.getIAllocator(toolkitAllocators.m_garlic);
 	sce::Gnmx::Toolkit::initializeWithAllocators(&toolkitAllocators);
@@ -278,7 +298,10 @@ int Context::Initialise()
 	}
 	depthTarget.setAddresses(depthMem, stencilMem);
 
+
 	return 0;
+
+
 }
 
 void Context::BeginFrame()
@@ -309,6 +332,9 @@ void Context::BeginFrame()
 
 	//set up the viewport to match the screen
 	gfxc.setupScreenViewport(0, 0, backBuffer->renderTarget.getWidth(), backBuffer->renderTarget.getHeight(), 0.5f, 0.5f);
+
+	gfxc.setRenderTarget(0, &backBuffer->renderTarget);
+	gfxc.setDepthRenderTarget(&depthTarget);
 
 	// Clear the color and the depth target
 	sce::Gnmx::Toolkit::SurfaceUtil::clearRenderTarget(gfxc, &backBuffer->renderTarget, kClearColor);
@@ -409,6 +435,61 @@ void Context::Shutdown()
 	garlicAlloc.terminate();
 
 	//SHUTDOWN END ---------------------------------------------------------
+}
+
+LinearAllocator* Context::GetGarlic()
+{
+	return &garlicAlloc;
+}
+
+RenderContext* Context::GetRenderContext()
+{
+	return renderContext;
+}
+
+sce::Gnmx::Toolkit::Allocators* Context::GetToolKitAllocs()
+{
+	return &toolkitAllocators;
+}
+
+void Context::SetPipeline(bool _depth, bool _cull, bool _blend)
+{
+	sce::Gnmx::GnmxGfxContext& gfxc = renderContext->gfxContext;
+	
+	
+	if (_depth)
+	{
+		sce::Gnm::DepthStencilControl dsc;
+		dsc.init();
+		dsc.setDepthControl(sce::Gnm::kDepthControlZWriteEnable, sce::Gnm::kCompareFuncLess);
+		dsc.setDepthEnable(true);
+		gfxc.setDepthStencilControl(dsc);
+	}
+
+	if (_cull)
+	{
+		// Cull clock-wise backfaces
+		sce::Gnm::PrimitiveSetup primSetupReg;
+		primSetupReg.init();
+		primSetupReg.setCullFace(sce::Gnm::kPrimitiveSetupCullFaceNone);
+		primSetupReg.setFrontFace(sce::Gnm::kPrimitiveSetupFrontFaceCcw);
+		gfxc.setPrimitiveSetup(primSetupReg);
+	}
+
+	if (_blend)
+	{
+		// Setup an additive blending mode
+		sce::Gnm::BlendControl blendControl;
+		blendControl.init();
+		blendControl.setBlendEnable(true);
+		blendControl.setColorEquation(
+			sce::Gnm::kBlendMultiplierSrcAlpha,
+			sce::Gnm::kBlendFuncAdd,
+			sce::Gnm::kBlendMultiplierOneMinusSrcAlpha);
+		gfxc.setBlendControl(0, blendControl);
+	}
+
+	gfxc.setRenderTargetMask(0xF);
 }
 
 

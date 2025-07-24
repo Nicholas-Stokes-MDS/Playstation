@@ -43,6 +43,33 @@ enum RenderContextState
 
 class Context
 {
+private:	// singleton set up
+	Context();
+	~Context();
+
+	static Context* s_pInstance;
+
+
+public:
+	static Context* Instance();
+	void DestroyInstance();
+	Context(Context& _other) = delete;
+	void operator = (const Context&) = delete;
+
+
+	int Initialise();
+	void BeginFrame();
+	void EndFrame();
+	void Shutdown();
+
+	LinearAllocator* GetGarlic();
+
+	RenderContext* GetRenderContext();
+
+	sce::Gnmx::Toolkit::Allocators* GetToolKitAllocs();
+
+	void SetPipeline(bool _depth, bool _cull, bool _blend);
+
 
 private:
 
@@ -93,15 +120,7 @@ private:
 	uint32_t kDisplayBufferWidth = 1920;
 	uint32_t kDisplayBufferHeight = 1080;
 
-public:
-
-	Context();
-	~Context();
-
-	int Initialise();
-	void BeginFrame();
-	void EndFrame();
-	void Shutdown();
+	sce::Gnmx::Toolkit::Allocators toolkitAllocators;
 
 };
 
