@@ -4,13 +4,22 @@
 
 #include "std_cbuffer.h"
 
+//Vertex s_quadVerts[4] =
+//{
+//	// position				// colour			// UV
+// {-0.5f, -0.5f, 0.0f,    0.7f, 0.7f, 1.0f,    0.0f, 1.0f},
+// { 0.5f, -0.5f, 0.0f,    0.7f, 0.7f, 1.0f,    1.0f, 1.0f},
+// {-0.5f,  0.5f, 0.0f,    0.7f, 1.0f, 1.0f,    0.0f, 0.0f},
+// { 0.5f,  0.5f, 0.0f,    1.0f, 0.7f, 1.0f,    1.0f, 0.0f},
+//};
+
 Vertex s_quadVerts[4] =
 {
 	// position				// colour			// UV
- {-0.5f, -0.5f, 0.0f,    0.7f, 0.7f, 1.0f,    0.0f, 1.0f},
- { 0.5f, -0.5f, 0.0f,    0.7f, 0.7f, 1.0f,    1.0f, 1.0f},
- {-0.5f,  0.5f, 0.0f,    0.7f, 1.0f, 1.0f,    0.0f, 0.0f},
- { 0.5f,  0.5f, 0.0f,    1.0f, 0.7f, 1.0f,    1.0f, 0.0f},
+ {-0.5f, -0.5f, 0.0f,    1.0, 0.0f, 0.0f,    0.0f, 1.0f},
+ { 0.5f, -0.5f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 1.0f},
+ {-0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f},
+ { 0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 0.0f,    1.0f, 0.0f},
 };
 
 uint16_t s_quadInds[6] =
@@ -122,30 +131,30 @@ void Model::Render()
 	gfxc.setVsShader(m_pVsShader, m_shaderModifier, m_fsMem, &m_vsInputOffsetCache);
 	gfxc.setPsShader(m_pPsShader, &m_psInputOffsetCache);
 
-	//ShaderConstants* constants = static_cast<ShaderConstants*>(
-	//	gfxc.allocateFromCommandBuffer(sizeof(ShaderConstants),
-	//		sce::Gnm::kEmbeddedDataAlignment4)
-	//	);
+	ShaderConstants* constants = static_cast<ShaderConstants*>(
+		gfxc.allocateFromCommandBuffer(sizeof(ShaderConstants),
+			sce::Gnm::kEmbeddedDataAlignment4)
+		);
 
-	//if (constants)
-	//{
-	//	Matrix4 model = Matrix4::identity();
+	if (constants)
+	{
+		Matrix4 model = Matrix4::identity();
 
-	//	model.setTranslation(Vector3(0, 0, z));
-	//	z -= 0.1f;
+		model.setTranslation(Vector3(0, 0, z));
+		z -= 0.1f;
 
-	//	float aspect = 1920.0f / 1080.0f;
-	//	Matrix4 proj = Matrix4::perspective(3.14f / 4, aspect, 0.1f, 100.0f);
-	//	Matrix4 view = Matrix4::lookAt(Point3(0, 0, -10), Point3(0, 0, 0), Vector3(0, 1, 0));
+		float aspect = 1920.0f / 1080.0f;
+		Matrix4 proj = Matrix4::perspective(3.14f / 4.0f, aspect, 0.1f, 100.0f);
+		Matrix4 view = Matrix4::lookAt(Point3(0, 0, -10), Point3(0, 0, 0), Vector3(0, 1, 0));
 
-	//	constants->m_WorldViewProj = ToMatrix4Unaligned(proj * view * model);
+		constants->m_WorldViewProj = ToMatrix4Unaligned(proj * view * model);
 
-	//	sce::Gnm::Buffer constBuffer;
-	//	constBuffer.initAsConstantBuffer(constants, sizeof(ShaderConstants));
+		sce::Gnm::Buffer constBuffer;
+		constBuffer.initAsConstantBuffer(constants, sizeof(ShaderConstants));
 
-	//	gfxc.setConstantBuffers(sce::Gnm::kShaderStageVs, 0, 1, &constBuffer);
+		gfxc.setConstantBuffers(sce::Gnm::kShaderStageVs, 0, 1, &constBuffer);
 
-	//}
+	}
 
 	gfxc.setVertexBuffers(
 		sce::Gnm::kShaderStageVs,

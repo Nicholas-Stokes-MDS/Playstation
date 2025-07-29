@@ -87,6 +87,9 @@
       <Profile Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">VSVS</Profile>
     </WavePsslc>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="vsoutput.hs" />
+  </ItemGroup>
   <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

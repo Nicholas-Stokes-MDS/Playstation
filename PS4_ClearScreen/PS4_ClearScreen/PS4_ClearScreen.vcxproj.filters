@@ -44,4 +44,9 @@
       <Filter>Shader Files</Filter>
     </WavePsslc>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="vsoutput.hs">
+      <Filter>Shader Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
