@@ -10,7 +10,8 @@ PlayStation(R)4 Programmer Tool Runtime Library Release 12.508.001
 
 #include "texture_util.h"
 
-#include "..\api_gnm\toolkit\allocators.h"
+//#include "/toolkit/allocators.h"
+#include "../toolkit/allocators.h"
 
 using namespace sce;
 using namespace sce::Gnmx;

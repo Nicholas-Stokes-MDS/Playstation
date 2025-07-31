@@ -298,7 +298,6 @@ int Context::Initialise()
 	}
 	depthTarget.setAddresses(depthMem, stencilMem);
 
-
 	return 0;
 
 

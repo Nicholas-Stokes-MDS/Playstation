@@ -11,8 +11,10 @@ struct Vertex
 	float u, v;
 };
 
-extern Vertex s_quadVerts[4];
-extern uint16_t s_quadInds[6];
+extern Vertex s_quadVerts[8];
+//extern Vertex s_cubeVerts[36];
+extern uint16_t s_quadInds[36];
+//extern uint16_t s_cubeInds[36];
 
 enum eVertexElements
 {
@@ -50,6 +52,9 @@ private:
 	uint32_t m_shaderModifier;
 
 	sce::Gnmx::InputOffsetsCache m_vsInputOffsetCache, m_psInputOffsetCache;
+
+	sce::Gnm::Texture m_texture;
+	sce::Gnm::Sampler m_sampler;
 
 };
 

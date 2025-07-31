@@ -9,6 +9,7 @@
 #include <video_out.h>
 
 #include "toolkit/toolkit.h" //when adding this dont forget to add as refence project!
+#include "common/texture_util.h"
 #include "common/allocator.h"
 
 
@@ -121,6 +122,8 @@ private:
 	uint32_t kDisplayBufferHeight = 1080;
 
 	sce::Gnmx::Toolkit::Allocators toolkitAllocators;
+
+
 
 };
 

@@ -4,6 +4,8 @@
 
 #include "std_cbuffer.h"
 
+#include "common/texture_util.h"
+
 //Vertex s_quadVerts[4] =
 //{
 //	// position				// colour			// UV
@@ -13,20 +15,51 @@
 // { 0.5f,  0.5f, 0.0f,    1.0f, 0.7f, 1.0f,    1.0f, 0.0f},
 //};
 
-Vertex s_quadVerts[4] =
+Vertex s_quadVerts[8] =
 {
-	// position				// colour			// UV
- {-0.5f, -0.5f, 0.0f,    1.0, 0.0f, 0.0f,    0.0f, 1.0f},
- { 0.5f, -0.5f, 0.0f,    0.0f, 1.0f, 0.0f,    1.0f, 1.0f},
- {-0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f},
- { 0.5f,  0.5f, 0.0f,    0.0f, 0.0f, 0.0f,    1.0f, 0.0f},
+// position               // color             // UV (arbitrary, can be adjusted per-face)
+	{-0.5f, -0.5f, -0.5f,     1.0f, 0.0f, 0.0f,    0.0f, 1.0f}, // 0 - left bottom back
+	{ 0.5f, -0.5f, -0.5f,     0.0f, 1.0f, 0.0f,    1.0f, 1.0f}, // 1 - right bottom back
+	{-0.5f,  0.5f, -0.5f,     0.0f, 0.0f, 1.0f,    0.0f, 0.0f}, // 2 - left top back
+	{ 0.5f,  0.5f, -0.5f,     0.0f, 0.0f, 0.0f,    1.0f, 0.0f}, // 3 - right top back
+	{-0.5f, -0.5f,  0.5f,     1.0f, 1.0f, 0.0f,    0.0f, 1.0f}, // 4 - left bottom front
+	{ 0.5f, -0.5f,  0.5f,     0.0f, 1.0f, 1.0f,    1.0f, 1.0f}, // 5 - right bottom front
+	{-0.5f,  0.5f,  0.5f,     1.0f, 0.0f, 1.0f,    0.0f, 0.0f}, // 6 - left top front
+	{ 0.5f,  0.5f,  0.5f,     1.0f, 1.0f, 1.0f,    1.0f, 0.0f}, // 7 - right top front
 };
 
-uint16_t s_quadInds[6] =
+uint16_t s_quadInds[36] =
 {
- 0, 1, 2,
- 1, 3, 2
+	// back face
+	0, 1, 2,
+	1, 3, 2,
+
+	// front face
+	4, 6, 5,
+	5, 6, 7,
+
+	// left face
+	0, 2, 4,
+	4, 2, 6,
+
+	// right face
+	1, 5, 3,
+	5, 7, 3,
+
+	// bottom face
+	0, 4, 1,
+	1, 4, 5,
+
+	// top face
+	2, 3, 6,
+	6, 3, 7
 };
+
+//uint16_t s_quadInds[6] =
+//{
+// 0, 1, 2,
+// 1, 3, 2
+//};
 
 Model::Model()
 {
@@ -121,6 +154,16 @@ int Model::Init()
 	sce::Gnmx::generateInputOffsetsCache(&m_psInputOffsetCache,
 		sce::Gnm::kShaderStagePs, m_pPsShader);
 
+	const char* _txtrPath = "/app0/textures/shuckle2.gnf";
+
+	TextureUtil::loadTextureFromGnf(&m_texture, _txtrPath, 0, *tkAlloc);
+
+	// initialize the texture sampler
+	m_sampler.init();
+	m_sampler.setMipFilterMode(sce::Gnm::kMipFilterModeNone);
+	m_sampler.setXyFilterMode(sce::Gnm::kFilterModeBilinear, sce::Gnm::kFilterModeBilinear);
+
+
 	return 0;
 }
 
@@ -131,6 +174,9 @@ void Model::Render()
 	gfxc.setVsShader(m_pVsShader, m_shaderModifier, m_fsMem, &m_vsInputOffsetCache);
 	gfxc.setPsShader(m_pPsShader, &m_psInputOffsetCache);
 
+
+
+
 	ShaderConstants* constants = static_cast<ShaderConstants*>(
 		gfxc.allocateFromCommandBuffer(sizeof(ShaderConstants),
 			sce::Gnm::kEmbeddedDataAlignment4)
@@ -138,10 +184,25 @@ void Model::Render()
 
 	if (constants)
 	{
-		Matrix4 model = Matrix4::identity();
+		Matrix4 model =
+		{
+				{  0.7071f, 0,  0.7071f, 0 },
+				{  0,       1,  0,       0 },
+				{ -0.7071f, 0,  0.7071f, 0 },
+				{  0,       0,  0,       1 }
+		};
 
-		model.setTranslation(Vector3(0, 0, z));
-		z -= 0.1f;
+			//Matrix4::identity();
+		//Matrix4 translation = Matrix4::identity();
+		//Matrix4 rotation = Matrix4::identity();
+		//Matrix4 scale = Matrix4::identity();
+
+		//model.setTranslation(Vector3(z, 0, -5));
+		//z -= 0.1f;
+
+		//model = Matrix4::Rot
+
+		//rotation = Matrix4::rotation()
 
 		float aspect = 1920.0f / 1080.0f;
 		Matrix4 proj = Matrix4::perspective(3.14f / 4.0f, aspect, 0.1f, 100.0f);
@@ -163,8 +224,11 @@ void Model::Render()
 		m_vertexBuffers
 	);
 
+	gfxc.setTextures(sce::Gnm::kShaderStagePs, 0, 1, &m_texture);
+	gfxc.setSamplers(sce::Gnm::kShaderStagePs, 0, 1, &m_sampler);
+
 	gfxc.setIndexSize(sce::Gnm::kIndexSize16);
 	gfxc.setPrimitiveType(sce::Gnm::kPrimitiveTypeTriList);
 
-	gfxc.drawIndex(6, m_pIndData);
+	gfxc.drawIndex(sizeof(s_quadInds), m_pIndData);
 }

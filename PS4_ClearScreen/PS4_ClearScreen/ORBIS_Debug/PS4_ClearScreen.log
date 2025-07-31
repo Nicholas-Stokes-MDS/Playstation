@@ -1,1 +1,7 @@
-﻿  PS4_ClearScreen.vcxproj -> D:\Users\MDS3000061\Playstation\PS4_ClearScreen\ORBIS_Debug\PS4_ClearScreen.elf
+﻿  Model.cpp
+  In file included from D:\Users\MDS3000061\Playstation\PS4_ClearScreen\PS4_ClearScreen\Model.cpp:1:
+D:\Users\MDS3000061\Playstation\PS4_ClearScreen\PS4_ClearScreen\Model.h(50,8): warning : private field 'z' is not used [-Wunused-private-field]
+     50 |         float z = 0.0f;
+        |               ^
+  1 warning generated.
+  PS4_ClearScreen.vcxproj -> D:\Users\MDS3000061\Playstation\PS4_ClearScreen\ORBIS_Debug\PS4_ClearScreen.elf

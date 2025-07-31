@@ -24,6 +24,9 @@
     <ClCompile Include="Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="common\texture_util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Context.h">
@@ -35,12 +38,21 @@
     <ClInclude Include="std_cbuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="common\texture_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <WavePsslc Include="myVertex_vv.pssl">
       <Filter>Shader Files</Filter>
     </WavePsslc>
     <WavePsslc Include="myPixel_p.pssl">
+      <Filter>Shader Files</Filter>
+    </WavePsslc>
+    <WavePsslc Include="Skybox_p.pssl">
+      <Filter>Shader Files</Filter>
+    </WavePsslc>
+    <WavePsslc Include="Skybox_vv.pssl">
       <Filter>Shader Files</Filter>
     </WavePsslc>
   </ItemGroup>

@@ -1,0 +1,20 @@
+//#include "vsoutput.hs"
+#include "std_cbuffer.h"
+
+struct VS_OUTPUT {
+	float4 PositionH		: S_POSITION;
+	float3 PositionL		:	POSITION0;
+	float3 Color		: TEXCOORD0;
+	float2 UV			: TEXCOORD1;
+};
+
+SamplerState samp0 : register(s0);
+Texture2D gCubeMap : register(t0);
+
+
+float4 main(VS_OUTPUT Input) : S_TARGET_OUTPUT
+{
+	//return float4(Input.Color, 1.0f);
+	return gCubeMap.Sample(samp0,Input.PositionL);
+
+}

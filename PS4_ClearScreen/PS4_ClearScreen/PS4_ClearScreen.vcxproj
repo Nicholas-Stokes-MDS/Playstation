@@ -63,6 +63,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="common\texture_util.cpp" />
     <ClCompile Include="Context.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
@@ -73,6 +74,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common\texture_util.h" />
     <ClInclude Include="Context.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="std_cbuffer.h" />
@@ -86,6 +88,8 @@
       <Profile Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">VSVS</Profile>
       <Profile Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">VSVS</Profile>
     </WavePsslc>
+    <WavePsslc Include="Skybox_p.pssl" />
+    <WavePsslc Include="Skybox_vv.pssl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="vsoutput.hs" />

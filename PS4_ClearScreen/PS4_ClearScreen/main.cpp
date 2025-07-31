@@ -42,7 +42,6 @@ int main(int argc, const char* argv[])
 	//delete context;
 	context = nullptr;
 
-	
 
 	return 0;
 }
